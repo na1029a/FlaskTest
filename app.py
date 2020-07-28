@@ -1,4 +1,5 @@
 from flask import Flask,render_template
+import sqlite3
 app = Flask(__name__)
 
 @app.route('/')
@@ -30,6 +31,18 @@ def index():
 def weather():
     weather = "ハレのちユキ"
     return render_template('weather.html',today_weather = weather)    
+
+@app.route('/dbtest')    
+def dbtest():
+    #dbと接続
+    conn = sqlite3.connect('flasktest.db')
+    c = conn.cursor()
+    #SQLの命令をかく
+    c.execute("SELECT name,age,address FROM user WHERE id = 1")
+    user_info = c.fetchone()
+    #DBの終了
+    print(user_info)
+    return render_template('dbtest.html',db_userinfo = user_info)
 
 if __name__ == '__main__':
     app.run(debug=True)
