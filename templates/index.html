@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>おはよう</h1>
-</body>
-
-</html>
+{%extends 'base.html'%}
+{%block content%}
+<h1>おはよう</h1>
+<h2>{{user_name}}さんこんにちは</h2>
+<h2>{{user_age}}歳です</h2>
+<h2>{{user_address}}に大学があるんですね</h2>
+{%endblock%}
